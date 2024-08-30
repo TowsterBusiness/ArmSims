@@ -18,5 +18,5 @@ Maven builds projects based on an XML file named pom.xml (Project Object Model) 
 
 Then build the project and you are good!
 
-!(bb.png)
-!(bb2.png)
+![](bb.png)
+![](bb2.png)
