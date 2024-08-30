@@ -103,5 +103,41 @@ public class SpirographSim extends Scene {
         float thetaA = (float) Math.acos(a2sP1.distance(a2sP2)/(2*armLength2));
         float thetaB1 = -thetaA + (float) Math.atan2(a2sP2.y - a2sP1.y, a2sP2.x - a2sP1.x);
         float thetaB2 = thetaA + (float) Math.atan2(a2sP1.y - a2sP2.y, a2sP1.x - a2sP2.x);
+
+//        System.out.println(Math.toDegrees(thetaB1) + " " + Math.toDegrees(thetaB2));
+
+        arm1 = new Rectangle((float) armPos1.x, (float) armPos1.y, armBuffer, armBuffer, armBuffer, armLength1 + armBuffer, 1, 0, 0, (float) currentArmAngle1);
+        armE1 = new Rectangle(
+                (float) a2sP1.x,
+                (float) a2sP1.y,
+                armBuffer, armBuffer, armBuffer, armLength2 + armBuffer, 0, 1, 0, (float) Math.toDegrees(thetaB1));
+        arm2 = new Rectangle((float) armPos2.x, (float) armPos2.y, armBuffer, armBuffer, armBuffer, armLength1 + armBuffer, 0, 1, 1, (float) currentArmAngle2);
+        armE2 = new Rectangle(
+                (float) a2sP2.x,
+                (float) a2sP2.y,
+                armBuffer, armBuffer, armBuffer, armLength2 + armBuffer, 1, 1, 0, (float) Math.toDegrees(thetaB2));
+
+        arm1.draw();
+        arm2.draw();
+        armE1.draw();
+        armE2.draw();
+
+        Vector2d estimatedPoint = new Vector2d(Math.cos(thetaB1), Math.sin(thetaB1)).mul(armLength2).add(a2sP1);
+
+        points.add(estimatedPoint);
+        if (points.size() > 300) {
+            points.remove();
+        }
+
+        glColor3f(0, 0, 0);
+        glLineWidth(3f);
+        glBegin(GL_POINTS);
+        for (Vector2d point : points) {
+            glVertex2f((float) point.x, (float) point.y);
+        }
+        glEnd();
+
+        path.drawPosOnTime(Time.getTime());
+        path.drawAnchorPoints();
     }
 }
