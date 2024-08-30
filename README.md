@@ -17,3 +17,6 @@ You can change the file that you want to use for the simulations by going to -> 
 Maven builds projects based on an XML file named pom.xml (Project Object Model) which manages project dependencies (the libraries you need to use) and the steps to be performed during the build process. 
 
 Then build the project and you are good!
+
+!(bb.png)
+!(bb2.png)
