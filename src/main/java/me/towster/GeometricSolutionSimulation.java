@@ -58,5 +58,32 @@ public class GeometricSolutionSimulation extends Scene {
         double by1 = ay1 + Math.sin(a1 + ad1) * armLength2;
         double bx2 = ax2 + Math.cos(a2 + ad2) * armLength2;
         double by2 = ay2 + Math.sin(a2 + ad2) * armLength2;
+
+        float arm1Angle = (float) Math.toDegrees(Math.atan2(ay1, ax1));
+        float arm2Angle = (float) Math.toDegrees(Math.atan2(by1 - ay1, bx1 - ax1));
+        float arm3Angle = (float) Math.toDegrees(Math.atan2(ay2, ax2));
+        float arm4Angle = (float) Math.toDegrees(Math.atan2(by2 - ay2, bx2 - ax2));
+
+        arm1 = new Rectangle(0, 0, armBuffer, armBuffer, armBuffer, armLength1 + armBuffer, 1, 0, 0, arm1Angle);
+        arm2 = new Rectangle(
+                (float) Math.cos(Math.toRadians(arm1Angle)) * armLength2,
+                (float) Math.sin(Math.toRadians(arm1Angle)) * armLength2,
+                armBuffer, armBuffer, armBuffer, armLength2 + armBuffer, 0, 0, 1, arm2Angle
+        );
+        arm3 = new Rectangle(0, 0, armBuffer, armBuffer, armBuffer, armLength1 + armBuffer, 1, 1, 0, arm3Angle);
+        arm4 = new Rectangle(
+                (float) Math.cos(Math.toRadians(arm3Angle)) * armLength2,
+                (float) Math.sin(Math.toRadians(arm3Angle)) * armLength2,
+                armBuffer, armBuffer, armBuffer, armLength2 + armBuffer, 0, 1, 1, arm4Angle
+        );
+
+
+        System.out.println("1: " + arm3Angle);
+        System.out.println("2: " + Math.toDegrees(Math.atan2(by2, bx2)));
+
+        arm1.draw();
+        arm2.draw();
+        arm3.draw();
+        arm4.draw();
     }
 }
