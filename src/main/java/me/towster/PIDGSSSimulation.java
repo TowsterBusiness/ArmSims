@@ -37,8 +37,6 @@ public class PIDGSSimulation extends Scene {
 
     @Override
     public void update(float dt) {
-        // TODO: Add code to make sure that the pointer is not too close to the orgin or too far from the outside
-
         float finX = (MouseListener.get().getX() / 400 - 1);
         float finY = -(MouseListener.get().getY() / 300 - 1);
 

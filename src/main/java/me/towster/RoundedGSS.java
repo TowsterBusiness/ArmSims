@@ -27,7 +27,7 @@ public class RoundedGSS extends Scene {
     Rectangle arm2;
     Rectangle arm3;
     Rectangle arm4;
-    float armBuffer = 0.05f;
+    float armBuffer = 0.056f;
     float armLength1 = 0.216f;
     float armLength2 = 0.312f;
 
@@ -57,7 +57,7 @@ public class RoundedGSS extends Scene {
 
         if (lastArmAngle1 - arm1Angle > 300) {
             spinCount1++;
-        } else if (lastArmAngle1 - arm1Angle < -300) {
+        } else if (lastArmAngle1 - arm1Angle < -360) {
             spinCount1--;
         }
         if (lastArmAngle2 - arm2Angle > 300) {

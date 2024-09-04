@@ -63,9 +63,6 @@ public class SpirographSim extends Scene {
 
     @Override
     public void update(float dt) {
-
-        // TODO: Add code to make sure that the pointer is not too close to the orgin or too far from the outside
-
         if (Time.getTime() > timeThreshold) {
             if (counter == 0) {
                 goalX = -0.25f;
@@ -103,8 +100,6 @@ public class SpirographSim extends Scene {
         float thetaA = (float) Math.acos(a2sP1.distance(a2sP2)/(2*armLength2));
         float thetaB1 = -thetaA + (float) Math.atan2(a2sP2.y - a2sP1.y, a2sP2.x - a2sP1.x);
         float thetaB2 = thetaA + (float) Math.atan2(a2sP1.y - a2sP2.y, a2sP1.x - a2sP2.x);
-
-//        System.out.println(Math.toDegrees(thetaB1) + " " + Math.toDegrees(thetaB2));
 
         arm1 = new Rectangle((float) armPos1.x, (float) armPos1.y, armBuffer, armBuffer, armBuffer, armLength1 + armBuffer, 1, 0, 0, (float) currentArmAngle1);
         armE1 = new Rectangle(

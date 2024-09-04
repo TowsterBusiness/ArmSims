@@ -17,8 +17,6 @@ public class PIDSimulation extends Scene {
     Queue<float[]> points;
 
     public PIDSimulation () {
-//        pidController = new PIDController(0.6f, 1.2f, 0.075f);
-//        pidController = new PIDController(0.2f, 0.4f, 0.066f);
         pidController = new PIDController(0.5f, 0f, 0f);
         points = new LinkedList<float[]>();
     }
@@ -39,9 +37,6 @@ public class PIDSimulation extends Scene {
 
         float vel = pidController.update( (finY - trueY), dt);
         trueY += vel * 8f;
-        System.out.println("velocity: " + vel);
-        System.out.println("position: " + trueY);
-        System.out.println("dt: " + dt);
 
         points.add(new float[] {trueY, Time.getTime()});
         if (points.size() > 300) {
