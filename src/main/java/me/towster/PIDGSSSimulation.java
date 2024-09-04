@@ -66,8 +66,8 @@ public class PIDGSSimulation extends Scene {
         float vel1 = pidController1.update(trueAngle1 - finAngle1, dt);
         float vel2 = pidController2.update(trueAngle2 - finAngle2, dt);
 
-        finAngle1 += vel1 * 0.1;
-        finAngle2 += vel2 * 0.1;
+        finAngle1 += vel1 * 0.2;
+        finAngle2 += vel2 * 0.2;
 
         arm1 = new Rectangle(0, 0, armBuffer, armBuffer, armBuffer, armLength1 + armBuffer, 1, 1, 0, finAngle1);
         arm2 = new Rectangle(
